@@ -1,0 +1,117 @@
+import React, { useState } from "react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+
+const questions = [
+  {
+    id: "water",
+    text: "Was there water in your dream?",
+    options: ["Yes", "No"]
+  },
+  {
+    id: "fall_fly",
+    text: "Did you experience falling or flying?",
+    options: ["Falling", "Flying", "None"]
+  },
+  {
+    id: "family",
+    text: "Did you see any family members?",
+    options: ["Yes", "No"]
+  },
+  {
+    id: "chased",
+    text: "Were you being chased?",
+    options: ["Yes", "No"]
+  },
+  {
+    id: "mirror",
+    text: "Did you see your reflection or a mirror?",
+    options: ["Yes", "No"]
+  },
+  {
+    id: "nature",
+    text: "Was the setting natural (like a forest or mountain)?",
+    options: ["Yes", "No"]
+  },
+  {
+    id: "teeth",
+    text: "Were your teeth or mouth involved in the dream?",
+    options: ["Yes", "No"]
+  }
+];
+
+const interpretations = {
+  water: "The presence of water suggests a connection to your emotions or subconscious mind.",
+  falling: "Falling may indicate a feeling of losing control or fear of failure.",
+  flying: "Flying might represent a desire to escape or a sense of newfound freedom.",
+  family: "Seeing family, especially a parent, may signal a need for comfort or unresolved feelings.",
+  chased: "Being chased could mean you're avoiding something important in real life.",
+  mirror: "Seeing a mirror can represent self-reflection or a struggle with your identity.",
+  nature: "A natural setting like a forest can mean you feel lost or overwhelmed.",
+  teeth: "Dreams about teeth are often tied to anxiety or worries about appearance."
+};
+
+export default function DreamAkinator() {
+  const [answers, setAnswers] = useState({});
+  const [showResults, setShowResults] = useState(false);
+
+  const handleChange = (id, value) => {
+    setAnswers({ ...answers, [id]: value });
+  };
+
+  const interpretDream = () => {
+    setShowResults(true);
+  };
+
+  return (
+    <div className="max-w-2xl mx-auto p-6">
+      <h1 className="text-2xl font-bold mb-4 text-center">🌙 Dream Akinator</h1>
+      {!showResults ? (
+        <Card>
+          <CardContent className="space-y-4 pt-4">
+            {questions.map((q) => (
+              <div key={q.id}>
+                <p className="font-medium">{q.text}</p>
+                <div className="flex gap-2 flex-wrap mt-2">
+                  {q.options.map((option) => (
+                    <Button
+                      key={option}
+                      variant={
+                        answers[q.id] === option ? "default" : "outline"
+                      }
+                      onClick={() => handleChange(q.id, option)}
+                    >
+                      {option}
+                    </Button>
+                  ))}
+                </div>
+              </div>
+            ))}
+            <Button className="w-full mt-4" onClick={interpretDream}>
+              Interpret Dream
+            </Button>
+          </CardContent>
+        </Card>
+      ) : (
+        <Card>
+          <CardContent className="space-y-4 pt-4">
+            <h2 className="text-xl font-semibold">🔮 Dream Interpretation:</h2>
+            {Object.entries(answers).map(([key, value]) => {
+              if (value === "Yes" && interpretations[key]) {
+                return <p key={key}>{interpretations[key]}</p>;
+              }
+              if (key === "fall_fly" && value !== "None") {
+                return <p key={key}>{interpretations[value.toLowerCase()]}</p>;
+              }
+              return null;
+            })}
+            <Button className="mt-4" onClick={() => setShowResults(false)}>
+              Start Over
+            </Button>
+          </CardContent>
+        </Card>
+      )}
+    </div>
+  );
+} 

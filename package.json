@@ -1,0 +1,16 @@
+{
+  "name": "dream-akinator",
+  "version": "1.0.0",
+  "description": "A web app that guesses your dreams and provides interpretations",
+  "main": "index.html",
+  "scripts": {
+    "start": "python -m http.server 8000",
+    "serve": "npx serve ."
+  },
+  "keywords": ["dreams", "interpretation", "psychology", "akinator", "web-app"],
+  "author": "kbis0",
+  "license": "MIT",
+  "devDependencies": {
+    "serve": "^14.0.0"
+  }
+}

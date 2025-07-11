@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dream Akinator - Discover Your Dreams</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Welcome Screen -->
+        <div id="welcome-screen" class="screen active">
+            <div class="header">
+                <h1>🌙 Dream Akinator</h1>
+                <p class="subtitle">I will guess your dream and reveal its meaning</p>
+            </div>
+            <div class="content">
+                <div class="instructions">
+                    <h3>How it works:</h3>
+                    <ul>
+                        <li>Think of a recent dream you had</li>
+                        <li>Answer my questions honestly</li>
+                        <li>I'll guess your dream type and provide interpretation</li>
+                        <li>It usually takes 8-12 questions</li>
+                    </ul>
+                </div>
+                <button id="start-btn" class="primary-btn">Start Dreaming</button>
+            </div>
+        </div>
+
+        <!-- Question Screen -->
+        <div id="question-screen" class="screen">
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div id="progress-fill" class="progress-fill"></div>
+                </div>
+                <span id="question-counter">Question 1 of ~10</span>
+            </div>
+            
+            <div class="question-container">
+                <h2 id="question-text">Loading question...</h2>
+                <div id="answers-container" class="answers-container">
+                    <!-- Answers will be dynamically generated -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Result Screen -->
+        <div id="result-screen" class="screen">
+            <div class="result-container">
+                <div class="result-header">
+                    <h2>🔮 I believe you dreamed about...</h2>
+                    <div id="dream-type" class="dream-type"></div>
+                </div>
+                
+                <div class="interpretation">
+                    <h3>🧠 Dream Interpretation</h3>
+                    <div id="interpretation-text" class="interpretation-text"></div>
+                </div>
+                
+                <div class="meaning">
+                    <h3>✨ What This Might Mean</h3>
+                    <div id="meaning-text" class="meaning-text"></div>
+                </div>
+                
+                <div class="action-buttons">
+                    <button id="save-dream-btn" class="secondary-btn">Save Dream</button>
+                    <button id="play-again-btn" class="primary-btn">Dream Again</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dream Journal -->
+        <div id="journal-screen" class="screen">
+            <div class="journal-container">
+                <h2>📖 Your Dream Journal</h2>
+                <div id="saved-dreams" class="saved-dreams">
+                    <!-- Saved dreams will appear here -->
+                </div>
+                <button id="back-to-home-btn" class="secondary-btn">Back to Home</button>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="navigation">
+            <button id="nav-home" class="nav-btn active">🏠 Home</button>
+            <button id="nav-journal" class="nav-btn">📖 Journal</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
