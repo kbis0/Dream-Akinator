@@ -1,6 +1,6 @@
 class DreamGeminiAI {
     constructor() {
-        this.apiKey = localStorage.getItem('gemini_api_key');
+        this.apiKey = localStorage.getItem('AIzaSyAph4-atl_TmOC7nASgGmOAOA1pdN0Rjjg');
         this.isEnabled = localStorage.getItem('ai_enabled') === 'true';
         this.apiEndpoint = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent';
     }
@@ -705,3 +705,4 @@ document.addEventListener('DOMContentLoaded', () => {
     // Replace the original DreamAkinator with the Gemini-enhanced version
     window.dreamAkinator = new GeminiEnabledDreamAkinator();
 });
+
